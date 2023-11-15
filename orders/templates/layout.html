@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div id="header">
+		<table width="100%" cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td class="green" width="20%">&nbsp;</td>
+					<td width="60%">
+						<img height="140" src="images/pinocchio_72.gif" alt="Pinocchio" />
+						<h1>Pinocchio's Pizza &amp; Subs</h1>
+						<h2>74 Winthrop Street<br />
+							Harvard Square<br />
+							617-876-4897</h2>
+					</td>
+					<td class="red" width="20%">&nbsp;</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id="menu">
+		<ul>
+			<li><a href="index.html" id="">Home</a></li>
+			<li><a href="menu.html" id="youarehere">Menu</a></li>
+			<li><a href="directions.html" id="">Directions</a></li>
+			<li><a href="hours.html" id="">Hours</a></li>
+			<li><a href="sicilian_vs_regular.html" id="">Sicilian vs. Regular</a></li>
+			<li><a href="contact.html" id="">Contact Us</a></li>
+		</ul>
+	</div>
+    {% block body %}{% endblock %}
+</body>
+</html>
