@@ -27,15 +27,13 @@
             <span>Contraseña</span>
         </label>
 
-        {% if form.errors %}
-        <ul>
-            {% for field, errors in form.errors.items %}
-            {% for error in errors %}
-            <li style="color: red;">{{ field }}: {{ error }}</li>
-            {% endfor %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li style="color: red;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
             {% endfor %}
         </ul>
-        {% endif %}
+    {% endif %}
 
         <p class="signin">¿No tienes una cuenta?<a href="{% url 'register' %}"> Crea una acá</a> </p>
 

@@ -50,7 +50,18 @@ class ProductVariantPrice(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
 
     def __str__(self) -> str:
-        return f'{self.product_variant} - Price: {self.price}' 
+        return f'{self.product_variant.product} - Price: {self.price} - Size: {self.size}' 
+    
+    def jsonProductVariantPrice(self):
+        return {
+            'id': self.id,
+            'Category': self.product_variant.product.category.name,
+            'productName': self.product_variant.product.name,
+            'price': self.price,
+            'size': self.size.name
+        }
+    
+    
 
 class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
