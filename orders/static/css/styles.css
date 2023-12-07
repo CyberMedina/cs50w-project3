@@ -56,3 +56,10 @@
  div.leftcolumn { float: left; width: 25%; margin-left: 1em; padding: 1em; }
  table.hours td {text-align: left;}
  div.internalmenunav { text-align: center; font-size: 64%; margin-top: 1em; margin-bottom: 1em; background-color: #cccccc;}
+
+
+ .not-active {
+    pointer-events: none;
+    cursor: default;
+  }
+  

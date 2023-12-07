@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+
+{% block customCSS %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block body %}
+
+<div class="container-register">
+
+    <form class="form" method="POST">
+        {% csrf_token %}
+        <p class="title">Registrate! </p>
+        <h2 class="message">Escribe tus datos a continuación: </h2>
+        <div class="flex">
+            <label>
+                {{ form.first_name }}
+                <span>Nombre(s)</span>
+            </label>
+
+            <label>
+                {{ form.last_name }}
+                <span>Apellido(s)</span>
+            </label>
+        </div>
+
+        <label>
+            {{ form.email }}
+            <span>Correo electrónico</span>
+        </label>
+
+        <label>
+            {{ form.password1 }}
+            <span>Contraseña</span>
+        </label>
+        <label>
+            {{ form.password2 }}
+            <span>Confirmar contraseña</span>
+        </label>
+        {% if form.errors %}
+        <ul>
+            {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+            <li style="color: red;">{{ field }}: {{ error }}</li>
+            {% endfor %}
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <p class="signin">¿Ya tienes una cuenta? <a href="{% url 'login' %}">Inicia Sesión</a> </p>
+
+        <button class="submit">Registrarse</button>
+    </form>
+
+</div>
+
+
+{% endblock %}

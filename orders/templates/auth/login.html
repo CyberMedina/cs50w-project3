@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+
+{% block customCSS %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block body %}
+
+<div class="container-register">
+
+    <form class="form" method="POST">
+        {% csrf_token %}
+        <p class="title">Inicio de sesión</p>
+        <h2 class="message">Inicia sesión para poder ingresar a la tienda!</h2>
+        <label>
+            <input class="input" type="email" placeholder="" required="" name="email">
+            <span>Correo electrónico</span>
+        </label>
+
+        <label>
+            <input class="input" type="password" placeholder="" required="" name="password">
+            <span>Contraseña</span>
+        </label>
+
+        {% if form.errors %}
+        <ul>
+            {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+            <li style="color: red;">{{ field }}: {{ error }}</li>
+            {% endfor %}
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <p class="signin">¿No tienes una cuenta?<a href="{% url 'register' %}"> Crea una acá</a> </p>
+
+        <button class="submit">Iniciar sesión</button>
+    </form>
+
+</div>
+
+
+{% endblock %}
